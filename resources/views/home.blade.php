@@ -16,6 +16,7 @@
 
                     <div class="row">
                         <form action="#" class="col-12" method="POST" id="create-list">
+
                             <div class="input-group mb-3 task-container">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text ">
@@ -30,7 +31,7 @@
                     <div class="row">
                         <div id="task-list" class="col-12">
                             @foreach ($tasks as $task)
-                            <div class='input-group mb-3 task-container' id="{{ $task->id.$task->user_id }}">
+                            <div class='input-group mb-3 task-container' id="{{ $task->id }}">
                                 <div class='input-group-prepend'>
                                     <span class="input-group-text">
                                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i><i class="fa fa-ellipsis-v"

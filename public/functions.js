@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('body').on('submit', '#create-list', function(e) {
         var task_container, latest_task;
         $(this).each(function() {
-            var task = $(this).find('.task') //<-- Should return all input elements in that specific form.
+            var task = $(this).find('.task'); //<-- Should return all input elements in that specific form.
             task_container = "<div class='input-group mb-3 task-container'>" +
                 "<div class='input-group-prepend'>" +
                 '<span class="input-group-text">' +
@@ -41,8 +41,10 @@ $(document).ready(function() {
             var id = task_container.attr('id');
             console.log(id);
             $.ajax({
-                url: "main.php",
-                data: 'id=' + id + "&action=delete",
+                url: "/task/destroy/"+id,
+                method: 'post',
+                // data: 'id=' + id + "&action=delete",
+                headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
                 success: function(response) {
                     task_container.remove();
                 }

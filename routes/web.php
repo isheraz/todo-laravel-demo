@@ -12,9 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'TaskController@index')->middleware('verified')->name('home');
+Route::get('/home', 'TaskController@index')->name('home');
+Route::post('/task/create', 'TaskController@store')->name('store-task');
+Route::post('/task/update/{task}','TaskController@update')->name('update-task');
+Route::post('/task/destroy/{task}', 'TaskController@destroy')->name('destroy-task');
